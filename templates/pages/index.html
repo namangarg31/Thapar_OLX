@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<section id="showcase">
+    <div class="container text-center">
+      <div class="home-search p-5">
+        <div class="overlay p-5">
+            {% include 'partials/_alerts.html'%}
+          <h1 class="display-4 mb-4">
+            ThaparOLX
+          </h1>
+          <p class="lead">
+           ( A platform to buy and sell your item at reasonable prices )</p>
+           <div class="search">
+            <form action="{% url 'search' %}">
+              <!-- Form Row 1 -->
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label class="sr-only">Search</label>
+                  <input type="text" name="keywords" class="form-control" placeholder="Search (Electronics, Gadgets, books)">
+                </div>
+  
+  
+                <div class="col-md-6 mb-3">
+                  <label class="sr-only">Hostel</label>
+                  <select name="address" class="form-control">
+                    <option selected="true" disabled="disabled">Hostel (All)</option>
+                      {% for key,value in address_choices.items %}
+                      <option value="{{key}}"
+                      {% if key == values.address %}
+                      selected
+                      {% endif %}
+                      >{{value}}</option>
+                      {%endfor%}
+  
+                  </select>
+                </div>
+              </div>
+              <!-- Form Row 2 -->
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label class="sr-only">Category</label>
+                  <select name="category" class="form-control">
+                    <option selected="true" disabled="disabled">Category (All)</option>
+                    {% for key,value in category_choices.items %}
+                      <option value="{{key}}"
+                      {% if key == values.category %}
+                      selected
+                      {% endif %}
+                      >{{value}}</option>
+                      {%endfor%}
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <select name="price" class="form-control">
+                    <option selected="true" disabled="disabled">Max Price (All)</option>
+                    {% for key,value in price_choices.items %}
+                      <option value="{{key}}"
+                      {% if key == values.price %}
+                      selected
+                      {% endif %}
+                      >{{value}}</option>
+                      {%endfor%}
+  
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Listings -->
+  <section id="listings" class="py-5">
+    <div class="container">
+      <h3 class="text-center mb-3">Latest Listings</h3>
+      <div class="row">
+        {% if listings %}
+        {% for listing in listings %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white">₹ {{ listing.price }}</span>
+              </h2>
+            </div>
+            <div class="card-body">
+              <div class="listing-heading text-center">
+                <h4 class="text-primary">{{listing.title}}</h4>
+                <p>
+                  <i class="fas fa-map-marker text-secondary"></i> {{listing.address}}</p>
+              </div>
+              <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-8">
+                  <i class="fas fa-th-large"></i> Category:{{listing.category}}
+                </div>
+              </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-8">
+                  <i class="fas fa-user"></i> Owner:{{listing.owner.first_name}}
+                </div>
+                </div>
+                <div class="row py-2 text-secondary">
+                <div class="col-8">
+                  <i class="fas fa-phone"></i> Phone:{{listing.owner.phone}}
+                </div>
+                </div>
+                <div class="row py-2 text-secondary">
+              <div class="col-10">
+                <i class="fas fa-envelope"></i> Email:{{listing.owner.email}}
+                </div>
+            </div>
+            </div>
+              <hr>
+              <div class="row text-secondary pb-2">
+                <div class="col-6">
+                  <i class="fas fa-clock"></i>   {{listing.list_date | timesince }}</div>
+              </div>
+              <hr>
+              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="col-md-12">
+            <p>Currently there are no listings Available</p>
+        </div>
+        {%endif%}
+      </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-5 bg-secondary text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <i class="fas fa-users fa-4x mr-4"></i>
+          <hr>
+          <h3>Who Are We</h3>
+          <p>We are the students of this institution particularly. Aiming towards the welfare of the institution and it's students.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-university fa-4x mr-4"></i>
+          <hr>
+          <h3>Institution Specific</h3>
+          <p>While doing this service we are insuring that this remains specific to the institution only. No need to search outside beacause we are doing this for you only.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-shopping-cart fa-4x mr-4"></i>
+          <hr>
+          <h3>Buying & Selling</h3>
+          <p>Just have an account with your institution id and you are good to go. Grab good offers and make good offers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

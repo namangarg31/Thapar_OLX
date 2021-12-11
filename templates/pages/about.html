@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">About ThaparOLX</h1>
+          <p class="lead">A Mini OLX for the college where a student can buy or sell any desirable item</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> About</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="about" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Our basic aim is to make the student life much simpler 🎓</h2>
+          <img src="assets/img/about.jpg" alt="">
+          <p class="mt-4">Any new student in the college often faces difficulties getting some of the basic items
+            like mattresses, cycles etc. So we decided to provide a platform to get all these items
+            at very reasonable prices. No need to buy these items at high prices because we are
+            taking responsibility for this.Here your need would be satisfied at minimal prices</p>
+        </div>
+        {% comment %} <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Seller of the month">
+            <div class="card-body">
+              <h5 class="card-title">Seller Of The Month</h5>
+              <h6 class="text-secondary">Kyle Brown</h6>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt amet, illo itaque similique repellat.
+                content.
+              </p>
+            </div>
+          </div>
+        </div> {% endcomment %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="bg-dark text-white text-center">
+    <h2 class="display-4">We Work For You</h2>
+    <hr>
+    <a href="{% url 'listings' %}" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Our Team ✒</h2>
+      <div class="row text-center">
+        <div class="col-md-3">
+          <img src="assets/img/realtors/kyle.jpg" alt="" class="rounded-circle mb-3">
+          <h4>Naman Garg</h4>
+          <p class="text-success">
+            <i class="fas fa-award text-success mb-3"></i> COE</p>
+          <hr>
+          <p>
+            <i class="fas fa-phone"></i> (+91)62399-20296</p>
+          <p>
+            <i class="fas fa-envelope-open"></i> ngarg4_be19@thapar.edu</p>
+        </div>
+
+        <div class="col-md-3">
+          <img src="assets/img/realtors/mark.jpg" alt="" class="rounded-circle mb-3">
+          <h4>Snehil Mittal</h4>
+          <p class="text-success">
+            <i class="fas fa-award text-success mb-3"></i> COE</p>
+          <hr>
+          <p>
+            <i class="fas fa-phone"></i> (+91)73551-03844</p>
+          <p>
+            <i class="fas fa-envelope-open"></i> smittal1_be19@thapar.edu</p>
+        </div>
+
+        <div class="col-md-3">
+          <img src="assets/img/realtors/jenny.jpg" alt="" class="rounded-circle mb-3">
+          <h4>Parth Garg</h4>
+          <p class="text-success">
+            <i class="fas fa-award text-success mb-3"></i> COE</p>
+          <hr>
+          <p>
+            <i class="fas fa-phone"></i> (+91)82668-55445</p>
+          <p>
+            <i class="fas fa-envelope-open"></i> pgarg1_be19@thapar.edu</p>
+        </div>
+ 
+        <div class="col-md-3">
+            <img src="assets/img/realtors/jenny.jpg" alt="" class="rounded-circle mb-3">
+            <h4>Amol Vyas</h4>
+            <p class="text-success">
+                <i class="fas fa-award text-success mb-3"></i> COE</p>
+              <hr>
+              <p>
+              <i class="fas fa-phone"></i> (+91)98107-04564</p>
+            <p>
+              <i class="fas fa-envelope-open"></i> jenny@btrealestate.co</p>
+          </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
